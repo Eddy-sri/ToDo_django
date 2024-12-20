@@ -1,21 +1,39 @@
 {% extends 'base.html' %}
 
+{% block title %} Todo-list {% endblock %}
 
     {% block content %} 
-    <nav class="navbar navbar-dark bg-dark">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">Todos</a>
-        </nav>
-        <div class="jumbotron">
-            <div class="container">
-                {% for task in tasks %}
-                    <a class="lead" href={{task.id}}> {{task}} </a> 
-                    <hr class="my-4">
-                {% endfor %}
+   
+
+          <div class="page-content page-container" id="page-content">
+            <div class="padding">
+                <div class="row container d-flex justify-content-center">
+                    <div class="col-md-12">
+                        <div class="card px-3">
+                            <div class="card-body">
+                                
+                                <a href="{% url 'create' %}" class="add btn btn-primary font-weight-bold todo-list-add-btn">Add</a>
+                                <div class="list-wrapper">
+                                    <ul class="d-flex flex-column-reverse todo-list">
+                                        {% for task in tasks %}
+                                            <li>
+                                                <div class="form-check"> <label class="form-check-label">
+                                                    </label>
+                                                    <input class="checkbox" type="checkbox">
+                                                    <a class="lead" href="{% url 'detail' task.id  %}"> {{task}} </a> 
+                                                    <i class="input-helper"></i>
+                                                    </label>
+                                                </div> <i class="remove mdi mdi-close-circle-outline"></i>
+                                            </li>
+                                        {% endfor %}    
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-      
-          
+        </div>
     
     {% endblock %}
 

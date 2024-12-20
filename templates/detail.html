@@ -1,9 +1,15 @@
 {% extends 'base.html' %}
 
+{% block title %} details {% endblock %}
+
 {% block content %}
 
-{% for i in task %}
-<h4>{{i.body}}</h4>
-{% endfor %}
+
+    <a href="{% url 'delete' task.id %}" class="btn btn-danger"> Delete </a>
+
+    <div class="card">
+        <h4 class="card-body">{{ task.body }}</h4>
+    </div>
+     
 
 {% endblock %}
