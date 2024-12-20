@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% for i in task %}
+<h4>{{i.body}}</h4>
+{% endfor %}
+
+{% endblock %}

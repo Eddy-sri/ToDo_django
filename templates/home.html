@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+
+    {% block content %} 
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Todos</a>
+        </nav>
+        <div class="jumbotron">
+            <div class="container">
+                {% for task in tasks %}
+                    <a class="lead" href={{task.id}}> {{task}} </a> 
+                    <hr class="my-4">
+                {% endfor %}
+            </div>
+          </div>
+      
+          
+    
+    {% endblock %}
+
