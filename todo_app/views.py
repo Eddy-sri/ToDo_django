@@ -4,7 +4,7 @@ from django.contrib import messages
 
 from .models import Todo
 
-from .forms import TodoCreateForm
+from .forms import TodoCreateForm , TodoUpdateForm
 # Create your views here.
 
 def home(request):
@@ -32,3 +32,16 @@ def create(request):
     else:
         form = TodoCreateForm()
     return render(request, 'create.html', {'form':form})
+
+
+def update (request, id):
+    todo = Todo.objects.get(id = id)
+    if request.method == 'POST':
+        form = TodoUpdateForm(request.POST, instance=todo)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'your todo was update successfully', 'success')
+            return redirect('home')
+    else:
+        form = TodoUpdateForm(instance=todo)
+    return render(request, 'update.html', {'form':form})

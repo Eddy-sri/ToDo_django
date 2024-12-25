@@ -6,6 +6,7 @@
 
 
     <a href="{% url 'delete' task.id %}" class="btn btn-danger"> Delete </a>
+    <a href="{% url 'update' task.id %}" class="btn btn-info"> Update </a>
 
     <div class="card">
         <h4 class="card-body">{{ task.body }}</h4>
